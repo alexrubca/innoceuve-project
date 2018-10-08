@@ -4,9 +4,10 @@ import { Resolve } from '@angular/router';
 
 import { Observable } from 'rxjs';
 import { EmployeeService } from './employee.service';
+import { Employee } from 'src/app/employee/models/employee.model';
 
 @Injectable()
-export class EmployeeResolver implements Resolve<Observable<any>> {
+export class EmployeeResolver implements Resolve<Observable<Employee[]>> {
   constructor( private employeeSrv: EmployeeService ) {}
 
   resolve() {

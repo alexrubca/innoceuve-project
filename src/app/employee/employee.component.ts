@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-employee',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employee.component.sass']
 })
 export class EmployeeComponent implements OnInit {
+  public employeeList: any;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
-  }
+    this.employeeList = this.route.snapshot.data.employeeList;
 
+    console.log(this.employeeList);
+  }
 }
