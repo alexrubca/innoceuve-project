@@ -1,8 +1,23 @@
-<main>
+<div class="app_employee">
   <p>Lista de empleados que trabajan en INNOCEUVE</p>
-  <ul>
-    <li *ngFor="let employee of employeeList">
+  <input type="search" name="search-employee" [(ngModel)]="query" placeholder="Buscar por nombre...">
+  <pre>{{ query }}</pre>
+  <button class="btn btn-info" type="button" title="Registrar nuevo empleado">
+    <span class="fas fa-user-plus" aria-hidden="true"></span>
+    Nuevo
+  </button>
+  <ul class="employee-list">
+    <li *ngFor="let employee of employeeList | search: 'name' : query">
+      <input type="radio" name="employee">
       {{ employee.name }}
+      <button class="btn btn-primary" type="button">
+        <span class="fas fa-user-edit" aria-hidden="true"></span>
+        Editar
+     </button>
+     <button class="btn btn-info" type="button" title="Eliminar empleado seleccionado">
+       <span class="fas fa-user-times" aria-hidden="true"></span>
+       Eliminar
+     </button>
     </li>
   </ul>
-</main>
+</div>
