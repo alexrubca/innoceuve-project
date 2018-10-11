@@ -8,9 +8,8 @@ import { Employee } from 'src/app/employee/models/employee.model';
   providedIn: 'root'
 })
 export class EmployeeService {
-  private param = sessionStorage.getItem('userId');
   private urlList = ENVIRONMENT + 'getall';
-  private urlRemove = ENVIRONMENT + 'remove' + (this.param ? this.param : '');
+  private urlRemove = ENVIRONMENT + 'remove';
 
   constructor( private http: HttpClient ) { }
 
@@ -18,7 +17,8 @@ export class EmployeeService {
     return this.http.get<Employee[]>(this.urlList);
   }
 
-  public removeEmployee(): Observable<Employee[]> {
+  public removeEmployee(id): Observable<Employee[]> {
+    this.urlRemove +=  + (id ? id : '');
     return this.http.get<Employee[]>(this.urlRemove);
   }
 }

@@ -1,23 +1,40 @@
 <div class="app_employee">
-  <p>Lista de empleados que trabajan en INNOCEUVE</p>
-  <input type="search" name="search-employee" [(ngModel)]="query" placeholder="Buscar por nombre...">
-  <pre>{{ query }}</pre>
-  <button class="btn btn-info" type="button" title="Registrar nuevo empleado">
-    <span class="fas fa-user-plus" aria-hidden="true"></span>
-    Nuevo
-  </button>
-  <ul class="employee-list">
-    <li *ngFor="let employee of employeeList | search: 'name' : query">
-      <input type="radio" name="employee">
-      {{ employee.name }}
-      <button class="btn btn-primary" type="button">
-        <span class="fas fa-user-edit" aria-hidden="true"></span>
-        Editar
-     </button>
-     <button class="btn btn-info" type="button" title="Eliminar empleado seleccionado">
-       <span class="fas fa-user-times" aria-hidden="true"></span>
-       Eliminar
-     </button>
-    </li>
-  </ul>
+  <header aria-labelledby="title">
+    <app-title>Plantilla de INNOCEUVE</app-title>
+    <p>Lista de empleados que trabajan en INNOCEUVE</p>
+  </header>
+
+  <section aria-label="Filtro de búsqueda de empleados">
+    <label for="search-employee">Filtrar</label>
+    <span class="fa fa-search app_employee__search-icon"></span>
+    <input class="app_employee__search-input" type="search" id="search-employee" name="search-employee" [(ngModel)]="query" placeholder="Buscar por nombre...">
+  </section>
+
+  <nav aria-labelledby="new">
+    <button class="btn btn-info" id="new" type="button" title="Registrar nuevo empleado" (click)="newEmployee()">
+      <span class="fas fa-user-plus" aria-hidden="true"></span>
+      Nuevo
+    </button>
+  </nav>
+
+  <section aria-label="Lista de empleados">
+    <ul class="app_employee__list" *ngIf="employeeList">
+      <li *ngFor="let employee of employeeList | search: 'name' : query">
+        <input type="radio" name="employee">
+        {{ employee.name }}
+        <button class="btn btn-primary" type="button" (click)="editEmployee(employee.id)">
+          <span class="fas fa-user-edit" aria-hidden="true"></span>
+          Editar
+        </button>
+        <button class="btn btn-info" type="button" title="Eliminar empleado seleccionado" (click)="removeEmployee(employee.id)">
+          <span class="fas fa-user-times" aria-hidden="true"></span>
+          Eliminar
+        </button>
+      </li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="unregistered" *ngIf="!employeeList">
+    <span id="unregistered">No hay ningún empleado registrado</span>
+  </section>
 </div>

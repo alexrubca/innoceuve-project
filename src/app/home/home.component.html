@@ -1,38 +1,43 @@
+<app-title>UX exercise</app-title>
+
 <p>
-  UX exercise
-  You have to develop the HTML front end for an IUD (AKA CRUD) example application. We provide
-  the HTTP REST endpoints and you have to build everything from there.
+  You have to develop the HTML front end for an IUD (AKA CRUD) example application. We provide the HTTP REST endpoints and you have to build everything from there.
   The only mandatory requirement is to use Angular as framework, version >= 4.
   Other optional and desirable features:
   (Choose those which you feel comfortable with)
-  - functional
-  - (client side) list filtering
-  - implement different screens for each section (list / edition). use angular router
-  module to access them
-  - form validation using ngx reactive forms techniques
-  - undo feature in edition
-  - server error handling
-  - unit testing with Jasmine (or similar: jest, …)
-  - multi-language support
-  - follow google’s best practices recommendation for modularization
-  - try to lean on typescript OO features (inheritance, encapsulation, abstraction, etc)
-  - optional: execute a pre app bootstrap routine, ie for fetching environment
-  configuration
-  - design
-  - validation error message (i.e.: required field, invalid date format)
-  - custom notifications (instead of JS native alert: ng-bootstrap, kend-ui, etc.)
-  - Sass (or PostCss) for CSS generation
-  - responsive design (bootrap 4, foundation, etc)
-  - transitions
-  - … and any little detail you like
-  (i.e.: server loading icon, “there is no data” message for empty lists, etc.)
-  Suggestions
-  Feel free to use any external directive or third party library you like.
-  Small files and semantic folder structure will be appreciated.
-  We like DRY: componentize to the limit, but not beyond the limit.
-  We know is a very stupid simple app (it’s an exercise), but work thinking it’s the beginning of a
-  larger project. Some elements have no sense for the IUD requirement (angular service to
-  encapsulate generic behavior) but it would be great if anyone want to add the IUD for another
-  entity.
-We are very (VERY) strict with naming and conventions (the “other” hard problem). There is no Good Convention, just choose one and keep it coherent.
 </p>
+  Functional
+  <ul>
+    <li>
+      (client side) list filtering
+    </li>
+    <li>implement different screens for each section (list / edition). use angular router module to access them</li>
+    <li>form validation using ngx reactive forms techniques</li>
+    <li>undo feature in edition</li>
+    <li>server error handling</li>
+    <li>unit testing with Jasmine (or similar: jest, …)</li>
+    <li>multi-language support</li>
+    <li>follow google’s best practices recommendation for modularization</li>
+    <li>try to lean on typescript OO features (inheritance, encapsulation, abstraction, etc)</li>
+    <li>optional: execute a pre app bootstrap routine, ie for fetching environment configuration</li>
+  </ul>
+  Design
+  <ul>
+    <li>validation error message (i.e.: required field, invalid date format)</li>
+    <li>custom notifications (instead of JS native alert: ng-bootstrap, kend-ui, etc.)</li>
+    <li>Sass (or PostCss) for CSS generation</li>
+    <li>responsive design (bootrap 4, foundation, etc)</li>
+    <li>transitions</li>
+    <li>… and any little detail you like (i.e.: server loading icon, “there is no data” message for empty lists, etc.)</li>
+  </ul>
+  <p>
+    Suggestions
+    Feel free to use any external directive or third party library you like.
+    Small files and semantic folder structure will be appreciated.
+    We like DRY: componentize to the limit, but not beyond the limit.
+    We know is a very stupid simple app (it’s an exercise), but work thinking it’s the beginning of a
+    larger project. Some elements have no sense for the IUD requirement (angular service to
+    encapsulate generic behavior) but it would be great if anyone want to add the IUD for another
+    entity.
+  We are very (VERY) strict with naming and conventions (the “other” hard problem). There is no Good Convention, just choose one and keep it coherent.
+  </p>
