@@ -8,7 +8,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class EmployeeFormComponent implements OnInit {
   @Input() config;
-  @Output() submit: EventEmitter<any> = new EventEmitter();
+  @Output() submitForm: EventEmitter<any> = new EventEmitter();
   @Output() reset: EventEmitter<any> = new EventEmitter();
 
   public employeeForm;
@@ -27,7 +27,7 @@ export class EmployeeFormComponent implements OnInit {
    */
   public onSubmit(form) {
     console.log(form);
-    this.submit.emit(form.value);
+    this.submitForm.emit(form.value);
   }
 
   /**

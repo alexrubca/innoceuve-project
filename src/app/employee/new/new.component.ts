@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NewService } from './services/new.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-new',
   templateUrl: './new.component.html',
   styleUrls: ['./new.component.sass']
 })
-export class NewComponent implements OnInit {
+export class NewComponent implements OnInit, OnDestroy {
+  private createEmployee$: Subscription;
   public formConfig;
 
   constructor( private newSrv: NewService ) { }
@@ -17,7 +19,8 @@ export class NewComponent implements OnInit {
 
   private getConfig() {
     const config = {
-      'button': 'Registrar'
+      'button': 'Registrar',
+      'titleButton': 'Registrar nuevo empleado'
     };
 
     return config;
@@ -27,8 +30,14 @@ export class NewComponent implements OnInit {
    * createEmployee
    */
   public createEmployee(employee) {
-    this.newSrv.createEmployee(employee.name, employee.date).subscribe(response => {
+    this.createEmployee$ = this.newSrv.createEmployee(employee.name, employee.date).subscribe(response => {
       console.log(response);
     });
+  }
+
+  ngOnDestroy() {
+    if (this.createEmployee$) {
+      this.createEmployee$.unsubscribe();
+    }
   }
 }

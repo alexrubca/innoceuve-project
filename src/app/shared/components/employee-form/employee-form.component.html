@@ -1,20 +1,31 @@
-<section aria-label="Formulario para rellenar los datos del empleado">
+<section class="app_employee-form" aria-labelledby="fill">
+  <p id="fill">Rellena el siguiente formulario con los datos del empleado:</p>
   <form [formGroup]="employeeForm" (ngSubmit)="onSubmit(employeeForm)">
-    <label for="name">Nombre</label>
-    <input type="text" name="name" id="name" formControlName="name">
+    <div class="row">
+      <div class="col-sm col-12">
+        <label for="name">Nombre</label>
+        <input class="form-control" type="text" name="name" id="name" formControlName="name">
+      </div>
 
-    <label for="date">Fecha de nacimiento</label>
-    <input type="date" name="date" id="date" formControlName="date">
+      <div class="col-sm col-12">
+        <label for="date">Fecha de nacimiento</label>
+        <input class="form-control" type="date" name="date" id="date" formControlName="date">
+      </div>
+    </div>
 
-    <nav aria-labelledby="save clear">
-      <button class="btn btn-success" id="save" type="submit" [disabled]="!employeeForm.valid">
-        <span class="fas fa-user-check" aria-hidden="true"></span>
-        {{ config.button }}
-      </button>
-      <button class="btn btn-primary" id="clear" type="reset" >
-        <span class="fas fa-eraser" aria-hidden="true"></span>
-        Limpiar
-      </button>
+    <nav class="button-container row" aria-labelledby="save clear">
+      <div class="col">
+        <button class="btn btn-primary" id="clear" type="reset" >
+          <span class="fas fa-eraser" aria-hidden="true"></span>
+          Limpiar
+        </button>
+      </div>
+      <div class="col">
+        <button class="btn btn-success float-right" id="save" type="submit" attr.title="{{ config.titleButton }}" [disabled]="!employeeForm.valid">
+          <span class="fas fa-user-check" aria-hidden="true"></span>
+          {{ config.button }}
+        </button>
+      </div>
     </nav>
   </form>
 </section>

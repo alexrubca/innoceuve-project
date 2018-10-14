@@ -4,18 +4,20 @@
     <p>Lista de empleados que trabajan en INNOCEUVE</p>
   </header>
 
-  <section aria-label="Filtro de búsqueda de empleados">
-    <label for="search-employee">Filtrar</label>
-    <span class="fa fa-search app_employee__search-icon"></span>
-    <input class="app_employee__search-input" type="search" id="search-employee" name="search-employee" [(ngModel)]="query" placeholder="Buscar por nombre...">
-  </section>
+  <section class="row" aria-label="Filtro de búsqueda de empleados">
+    <div class="col-8 col-sm-9">
+      <label for="search-employee">Filtrar</label>
+      <span class="fa fa-search app_employee__search-icon"></span>
+      <input class="app_employee__search-input form-control" type="search" id="search-employee" name="search-employee" [(ngModel)]="query" placeholder="Buscar por nombre...">
+    </div>
 
-  <nav aria-labelledby="new">
-    <button class="btn btn-info" id="new" type="button" title="Registrar nuevo empleado" (click)="newEmployee()">
-      <span class="fas fa-user-plus" aria-hidden="true"></span>
-      Nuevo
-    </button>
-  </nav>
+    <nav class="col" aria-labelledby="new">
+      <button class="btn btn-info app_employee__new-button" id="new" type="button" title="Registrar nuevo empleado" (click)="newEmployee()">
+        <span class="fas fa-user-plus" aria-hidden="true"></span>
+        Nuevo
+      </button>
+    </nav>
+  </section>
 
   <section aria-label="Lista de empleados">
     <ul class="app_employee__list" *ngIf="employeeList">

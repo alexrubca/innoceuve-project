@@ -7,13 +7,13 @@ import * as moment from 'moment';
 @Injectable({
   providedIn: 'root'
 })
-export class NewService {
+export class UpdateService {
   constructor( private http: HttpClient ) { }
 
-  public createEmployee(user, birthdate): Observable<any> {
+  public updateEmployee(user, birthdate): Observable<any> {
     const date = moment(birthdate).toISOString();
 
-    const url = ENVIRONMENT + 'update' + '?user=' + user + '&birthdate=' + date;
+    const url = ENVIRONMENT + 'create' + '?user=' + user + '&birthdate=' + date;
 
     return this.http.post<any>(url, {});
   }
