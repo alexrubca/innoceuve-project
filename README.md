@@ -5,9 +5,15 @@ This is a CRUD example. I use Angular 6 as framework with ES6, HTML5 and SASS wi
 Functional:
 - (Client side) list filtering.
 - Implement different screens for each section (list / edition). Using angular router module to access them.
+- Form validation using ngx reactive forms techniques.
+- Undo feature in edition.
+- Server error handling.
 - Follow google’s best practices recommendation for modularization.
 - Try to lean on typescript OO features (inheritance, encapsulation, abstraction, etc).
 
 Design:
-- Sass (or PostCss) for CSS generation.
+- Custom notifications.
+- Sass for CSS generation.
 - Responsive design with Bootstrap 4.
+- Transitions.
+- No data message in empty list.
