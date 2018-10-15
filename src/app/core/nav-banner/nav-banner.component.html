@@ -16,13 +16,13 @@
   <div class="collapse navbar-collapse text-center" id="navbarSupportedContent" [ngClass]="show ? 'show' : ''">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" [ngClass]="home ? 'active' : ''">
-        <a class="nav-link" routerLink="/home" (click)="activeItem()">
+        <a class="nav-link" routerLink="/home" (click)="saveItem('home')">
           <span class="fas fa-home" aria-hidden="true"></span>
           Inicio
           </a>
       </li>
       <li class="nav-item" [ngClass]="employee ? 'active' : ''">
-        <a class="nav-link" routerLink="/employee" (click)="activeItem()">
+        <a class="nav-link" routerLink="/employee" (click)="saveItem('employee')">
           <span class="app_nav-banner__icons far fa-address-book" aria-hidden="true"></span>Plantilla
         </a>
       </li>

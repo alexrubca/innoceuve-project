@@ -11,7 +11,7 @@ export class GetEmployeeService {
   constructor( private http: HttpClient ) { }
 
   public getEmployee(id): Observable<Employee> {
-    const url = ENVIRONMENT + 'get' + '?id=' + id;
+    const url = ENVIRONMENT + '/' + id;
 
     return this.http.get<Employee>(url);
   }

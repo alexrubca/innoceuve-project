@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NewService } from './services/new.service';
 import { Subscription } from 'rxjs';
+import * as moment from 'moment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new',
@@ -11,7 +13,10 @@ export class NewComponent implements OnInit, OnDestroy {
   private createEmployee$: Subscription;
   public formConfig;
 
-  constructor( private newSrv: NewService ) { }
+  constructor(
+    private newSrv: NewService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.formConfig = this.getConfig();
@@ -30,8 +35,16 @@ export class NewComponent implements OnInit, OnDestroy {
    * createEmployee
    */
   public createEmployee(employee) {
-    this.createEmployee$ = this.newSrv.createEmployee(employee.name, employee.date).subscribe(response => {
-      console.log(response);
+    const date = moment(employee.date).toISOString();
+    const objectToSend = {
+      name: employee.name,
+      birthdate: date,
+      id: 0
+    };
+
+    this.createEmployee$ = this.newSrv.createEmployee(objectToSend).subscribe(response => {
+      alert('El nuevo empleado ha sido registrado con éxito.');
+      this.router.navigateByUrl('/employee');
     });
   }
 

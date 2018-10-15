@@ -9,16 +9,25 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 export class EmployeeFormComponent implements OnInit {
   @Input() config;
   @Output() submitForm: EventEmitter<any> = new EventEmitter();
-  @Output() reset: EventEmitter<any> = new EventEmitter();
 
-  public employeeForm;
+  public employeeForm: FormGroup;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.employeeForm = this.fb.group({
-      name: ['', Validators.required],
-      date: ['', Validators.required]
+      name: [this.config.name ? this.config.name : '', Validators.required],
+      date: [this.config.date ? this.config.date : '', Validators.required]
+    });
+  }
+
+  /**
+   * undoEmployee
+   */
+  public undoEmployee() {
+    this.employeeForm.reset({
+      name: this.config.name ? this.config.name : '',
+      date: this.config.date ? this.config.date : ''
     });
   }
 
@@ -28,12 +37,5 @@ export class EmployeeFormComponent implements OnInit {
   public onSubmit(form) {
     console.log(form);
     this.submitForm.emit(form.value);
-  }
-
-  /**
-   * onReset
-   */
-  public onReset() {
-    this.reset.emit(true);
   }
 }

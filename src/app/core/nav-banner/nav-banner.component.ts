@@ -14,30 +14,35 @@ export class NavBannerComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    if (sessionStorage.getItem('active')) {
-      const active = sessionStorage.getItem('active');
-      if (active === 'home') {
-        this.home = true;
-      } else {
-        this.employee = true;
-      }
-    } else {
-      this.home = true;
-      sessionStorage.setItem('active', 'home');
-    }
+    this.activeItem();
   }
 
   /**
    * activeItem
    */
-  public activeItem() {
-    this.home = !this.home;
-    this.employee = !this.employee;
-
-    if (this.home) {
+  public saveItem(item) {
+    if (item === 'home') {
       sessionStorage.setItem('active', 'home');
     } else {
       sessionStorage.setItem('active', 'employee');
+    }
+    this.activeItem();
+  }
+
+  private activeItem() {
+    if (sessionStorage.getItem('active')) {
+      const active = sessionStorage.getItem('active');
+      if (active === 'home') {
+        this.home = true;
+        this.employee = false;
+      } else {
+        this.employee = true;
+        this.home = false;
+      }
+    } else {
+      this.home = true;
+      this.employee = false;
+      sessionStorage.setItem('active', 'home');
     }
   }
 }

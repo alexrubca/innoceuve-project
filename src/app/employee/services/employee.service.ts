@@ -8,17 +8,17 @@ import { Employee } from 'src/app/employee/models/employee.model';
   providedIn: 'root'
 })
 export class EmployeeService {
-  private urlList = ENVIRONMENT + 'getall';
-  private urlRemove = ENVIRONMENT + 'remove';
-
   constructor( private http: HttpClient ) { }
 
   public getEmployeesList(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.urlList);
+    const url = ENVIRONMENT;
+
+    return this.http.get<Employee[]>(url);
   }
 
   public removeEmployee(id): Observable<Employee[]> {
-    this.urlRemove +=  + (id ? id : '');
-    return this.http.get<Employee[]>(this.urlRemove);
+    const url = ENVIRONMENT + '/' + id;
+
+    return this.http.delete<Employee[]>(url);
   }
 }

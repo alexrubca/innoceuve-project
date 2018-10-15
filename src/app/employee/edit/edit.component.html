@@ -1,2 +1,2 @@
 <app-title>Editar empleado</app-title>
-<app-employee-form [config]="formConfig" (submitForm)="editEmployee($event)"></app-employee-form>
+<app-employee-form *ngIf="formConfig" [config]="formConfig" (submitForm)="editEmployee($event)"></app-employee-form>

@@ -21,17 +21,22 @@
 
   <section aria-label="Lista de empleados">
     <ul class="app_employee__list" *ngIf="employeeList">
-      <li *ngFor="let employee of employeeList | search: 'name' : query">
-        <input type="radio" name="employee">
-        {{ employee.name }}
-        <button class="btn btn-primary" type="button" (click)="editEmployee(employee.id)">
-          <span class="fas fa-user-edit" aria-hidden="true"></span>
-          Editar
-        </button>
-        <button class="btn btn-info" type="button" title="Eliminar empleado seleccionado" (click)="removeEmployee(employee.id)">
-          <span class="fas fa-user-times" aria-hidden="true"></span>
-          Eliminar
-        </button>
+      <li class="app_employee__list--item row" *ngFor="let employee of employeeList | search: 'name' : query">
+        <div class="col-sm-6 col-12">
+          <span class="app_employee__list--item__name">{{ employee.name }}</span>
+        </div>
+        <div class="col">
+          <button class="btn btn-primary" type="button" (click)="editEmployee(employee.id)">
+            <span class="fas fa-user-edit" aria-hidden="true"></span>
+            Editar
+          </button>
+        </div>
+        <div class="col">
+          <button class="btn btn-danger" type="button" title="Eliminar empleado seleccionado" (click)="removeEmployee(employee.id)">
+            <span class="fas fa-user-times" aria-hidden="true"></span>
+            Eliminar
+          </button>
+        </div>
       </li>
     </ul>
   </section>

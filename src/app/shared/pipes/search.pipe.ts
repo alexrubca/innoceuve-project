@@ -10,7 +10,7 @@ export class SearchPipe implements PipeTransform {
     if (!items) {
       return [];
     } else {
-      return items.filter(it => it[item].indexOf(value) > -1);
+      return items.filter(it => it[item] && it[item].indexOf(value) > -1);
     }
   }
 }

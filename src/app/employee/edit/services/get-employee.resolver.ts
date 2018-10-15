@@ -18,7 +18,7 @@ export class GetEmployeeResolver implements Resolve<Observable<Employee>> {
       const id = sessionStorage.getItem('userId');
       return this.employeeSrv.getEmployee(id);
     } else {
-      this.router.navigateByUrl('employee');
+      // this.router.navigateByUrl('employee');
     }
   }
 }

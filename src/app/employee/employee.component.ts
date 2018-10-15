@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from './services/employee.service';
+import { Employee } from './models/employee.model';
 
 @Component({
   selector: 'app-employee',
@@ -8,7 +9,8 @@ import { EmployeeService } from './services/employee.service';
   styleUrls: ['./employee.component.sass']
 })
 export class EmployeeComponent implements OnInit {
-  public employeeList: any;
+  public query: string;
+  public employeeList: Employee[];
 
   constructor(
     private route: ActivatedRoute,
@@ -32,7 +34,8 @@ export class EmployeeComponent implements OnInit {
 
   public removeEmployee(id) {
     this.employeeSrv.removeEmployee(id).subscribe(response => {
-      console.log('Eliminado');
+      alert('Se ha eliminado el empleado seleccionado.');
+      window.location.reload();
     });
   }
 }

@@ -9,15 +9,22 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
-  constructor() { }
+  constructor(private router: Router) { }
   // function which will be called for all http calls
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    // Update the request Parameters
+    const updatedRequest = request.clone({
+      headers: request.headers.set('Content-Type', 'application/json')
+    });
+    // Log updated parameters
+    console.log('Before making api call : ', updatedRequest);
     return next.handle(request).pipe(
       tap(
         event => {
@@ -30,6 +37,8 @@ export class Interceptor implements HttpInterceptor {
           // Print http response into the browser's console in case of failure
           if (event instanceof HttpResponse) {
             console.log('api call error :', event);
+            alert('Ha ocurrido un error. Inténtelo más tarde.');
+            this.router.navigateByUrl('/');
           }
         }
       )

@@ -7,9 +7,9 @@ import { EditComponent } from './edit/edit.component';
 import { GetEmployeeResolver } from './edit/services/get-employee.resolver';
 
 const routes: Routes = [
-  { path: '', component: EmployeeComponent, resolve: { employeeList: EmployeeResolver} },
+  { path: '', component: EmployeeComponent, resolve: { employeeList: EmployeeResolver } },
   { path: 'new', component: NewComponent },
-  { path: 'edit', component: EditComponent, resolve: { employeeList: GetEmployeeResolver } },
+  { path: 'edit', component: EditComponent, resolve: { employee: GetEmployeeResolver } },
 ];
 
 @NgModule({
