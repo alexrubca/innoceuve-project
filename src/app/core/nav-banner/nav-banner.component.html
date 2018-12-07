@@ -1,6 +1,8 @@
 <nav class="app_nav-banner navbar navbar-expand-lg navbar-light bg-light">
   <div class="w-100">
-    <a class="app_nav-banner__title navbar-brand" routerLink="/home">INNO<span class="secondary-color">CEUVE</span></a>
+    <a class="app_nav-banner__title navbar-brand" routerLink="/home" (click)="activeItem('home')">
+      INNO<span class="secondary-color">CEUVE</span>
+    </a>
     <button class="navbar-toggler float-right"
             type="button"
             data-toggle="collapse"
@@ -16,13 +18,13 @@
   <div class="collapse navbar-collapse text-center" id="navbarSupportedContent" [ngClass]="show ? 'show' : ''">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" [ngClass]="home ? 'active' : ''">
-        <a class="nav-link" routerLink="/home" (click)="saveItem('home')">
+        <a class="nav-link" routerLink="/home" (click)="activeItem('home')">
           <span class="fas fa-home" aria-hidden="true"></span>
           Inicio
           </a>
       </li>
       <li class="nav-item" [ngClass]="employee ? 'active' : ''">
-        <a class="nav-link" routerLink="/employee" (click)="saveItem('employee')">
+        <a class="nav-link" routerLink="/employee" (click)="activeItem()">
           <span class="app_nav-banner__icons far fa-address-book" aria-hidden="true"></span>Plantilla
         </a>
       </li>
