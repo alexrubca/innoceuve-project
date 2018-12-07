@@ -35,7 +35,6 @@ export class EmployeeFormComponent implements OnInit {
    * onSubmit
    */
   public onSubmit(form) {
-    console.log(form);
     this.submitForm.emit(form.value);
   }
 }
