@@ -3,7 +3,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { EmployeeFormComponent } from './employee-form.component';
 
-fdescribe('EmployeeFormComponent', () => {
+describe('EmployeeFormComponent', () => {
   let component: EmployeeFormComponent;
   let fixture: ComponentFixture<EmployeeFormComponent>;
 
