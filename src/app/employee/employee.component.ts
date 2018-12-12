@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from './services/employee.service';
 import { Employee } from './models/employee.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.sass']
 })
-export class EmployeeComponent implements OnInit {
+export class EmployeeComponent implements OnInit, OnDestroy {
   public query: string;
   public employeeList: Employee[];
+  public employeeList$: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,7 +37,15 @@ export class EmployeeComponent implements OnInit {
   public removeEmployee(id) {
     this.employeeSrv.removeEmployee(id).subscribe(response => {
       alert('Se ha eliminado el empleado seleccionado.');
-      window.location.reload();
+      this.employeeList$ = this.employeeSrv.getEmployeesList().subscribe(data => {
+        this.employeeList = data;
+      });
     });
+  }
+
+  ngOnDestroy() {
+    if (this.employeeList$) {
+      this.employeeList$.unsubscribe();
+    }
   }
 }
