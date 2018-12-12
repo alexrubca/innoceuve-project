@@ -22,11 +22,6 @@ export class EmployeeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.employeeList = this.route.snapshot.data.employeeList;
-    console.log(this.employeeList);
-  }
-
-  public newEmployee() {
-    this.router.navigateByUrl('/employee/new');
   }
 
   public editEmployee(id) {
@@ -35,7 +30,7 @@ export class EmployeeComponent implements OnInit, OnDestroy {
   }
 
   public removeEmployee(id) {
-    this.employeeSrv.removeEmployee(id).subscribe(response => {
+    this.employeeSrv.removeEmployee(id).subscribe(() => {
       alert('Se ha eliminado el empleado seleccionado.');
       this.employeeList$ = this.employeeSrv.getEmployeesList().subscribe(data => {
         this.employeeList = data;
